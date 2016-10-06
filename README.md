@@ -2,6 +2,9 @@
 
 Small tool that pings specified addresses and logs timings and packet loss to Statsd (with tagging).
 
+![Output](https://cloud.githubusercontent.com/assets/2661/19151915/14f063a8-8c1b-11e6-856a-76f2cfbabe6a.png)
+![Dashboard Example](https://cloud.githubusercontent.com/assets/2661/19151955/4f7ec7ee-8c1b-11e6-9528-d65c927aa615.png)
+
 ## Installation
 
 Build and run with Docker, or run with Crystal.
