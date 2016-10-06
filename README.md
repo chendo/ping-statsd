@@ -1,22 +1,24 @@
 # ping-statsd
 
-Small app that pings specified addresses and logs timings and packet loss to Datadog.
+Small tool that pings specified addresses and logs timings and packet loss to Statsd (with tagging).
 
 ## Installation
 
-
-TODO: Write installation instructions here
-
+Build and run with Docker, or run with Crystal.
 
 ## Usage
 
+This tool is configured with environment variables for simplicity with running with Docker.
 
+You can supply them like so:
 
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
+```
+PING_GOOGLE=google.com      # emits tags name:google,host:google.com
+PING_SOME_IP=8.8.8.8        # emits tags name:some_ip,host:8.8.8.8
+METRIC_BASE=namespace.ping  # emits metrics at "namespace.ping.{time,timeout,total}"
+QUIET=true                  # optional, suppresses output
+INTERVAL=0.2                # optional, sets ping interval to 200ms
+```
 
 ## Contributing
 
