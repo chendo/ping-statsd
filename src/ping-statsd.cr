@@ -61,6 +61,7 @@ end
 statsd = Statsd::Client.new(ENV.fetch("STATSD_HOST", "localhost"), ENV.fetch("STATSD_PORT", "8125").to_i)
 logger = ENV.fetch("QUIET", nil) ? IO::Null.new : STDOUT
 interval = ENV.fetch("INTERVAL", "1").to_f32
+metric_base = ENV.fetch("METRIC_BASE", "ping")
 
 fibers = [] of Fiber
 ENV.keys.each do |key|
@@ -68,6 +69,7 @@ ENV.keys.each do |key|
     args = {
       name: $1.size == 0 ? nil : $1.downcase,
       host: ENV[key],
+      metric_base: metric_base,
       logger: logger,
       interval: interval,
       statsd: statsd
