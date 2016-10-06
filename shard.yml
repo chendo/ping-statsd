@@ -1,0 +1,12 @@
+name: ping-statsd
+version: 0.1.0
+
+authors:
+  - Jack Chen (chendo) <github@chen.do>
+
+dependencies:
+  statsd:
+    github: miketheman/statsd.cr
+    branch: master
+
+license: MIT

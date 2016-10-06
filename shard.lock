@@ -1,0 +1,6 @@
+version: 1.0
+shards:
+  statsd:
+    github: miketheman/statsd.cr
+    commit: 5b446bf0a5bb15ad7a13be5ed91aabce2a6cc41c
+
