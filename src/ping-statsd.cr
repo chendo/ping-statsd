@@ -19,6 +19,9 @@ module Ping::Statsd
       @metric_base : String = "ping",
       @interval : Float32 = 1_f32,
       @logger : IO = STDOUT)
+
+      @name ||= @host
+      @tags = ["host:#{@host}", "name:#{name}"]
     end
 
     def run
@@ -30,12 +33,12 @@ module Ping::Statsd
         case line
         when /bytes from .*=([\d.]+) ms$/
           log "#{$1} ms"
-          @statsd.increment(metric("success"), tags: tags)
-          @statsd.timing(metric("time"), $1.to_f32, tags: tags)
-          @statsd.increment(metric("total"), tags: tags)
+          @statsd.increment(metric("success"), tags: @tags)
+          @statsd.timing(metric("time"), $1.to_f32, tags: @tags)
+          @statsd.increment(metric("total"), tags: @tags)
         when /^Request timeout/
-          @statsd.increment(metric("timeout"), tags: tags)
-          @statsd.increment(metric("total"), tags: tags)
+          @statsd.increment(metric("timeout"), tags: @tags)
+          @statsd.increment(metric("total"), tags: @tags)
           log "Timed out"
         when /^PING/
           # no-op
@@ -49,12 +52,8 @@ module Ping::Statsd
       [@metric_base, name].join(".")
     end
 
-    private def tags
-      ["host:#{@host}", "name:#{@name}"]
-    end
-
     private def log(msg)
-      @logger.puts "[#{@name || @host}]: #{msg}"
+      @logger.puts "[#{@name}]: #{msg}"
     end
   end
 end
@@ -67,7 +66,7 @@ fibers = [] of Fiber
 ENV.keys.each do |key|
   if key =~ /^PING_?(.*)$/
     args = {
-      name: $1.size == 0 ? nil : $1,
+      name: $1.size == 0 ? nil : $1.downcase,
       host: ENV[key],
       logger: logger,
       interval: interval,
