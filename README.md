@@ -2,7 +2,13 @@
 
 Small tool that pings specified addresses and logs timings and packet loss to Statsd (with tagging).
 
+I built this so I can log and graph latency stats for my home connection. You may find it useful
+to deploy it in production to measure latency to critical services.
+
+Here is the console output from my deployment into a local Flynn cluster I have at home:
 ![Output](https://cloud.githubusercontent.com/assets/2661/19151915/14f063a8-8c1b-11e6-856a-76f2cfbabe6a.png)
+
+Screenshot of the graphs I've built on Datadog:
 ![Dashboard Example](https://cloud.githubusercontent.com/assets/2661/19151955/4f7ec7ee-8c1b-11e6-9528-d65c927aa615.png)
 
 ## Installation
