@@ -17,6 +17,6 @@ WORKDIR /app
 RUN shards install
 
 # Build our app
-RUN crystal build --release src/ping-statsd.cr
+RUN crystal compile --release src/ping-statsd.cr
 
 CMD ./ping-statsd
