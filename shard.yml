@@ -7,6 +7,5 @@ authors:
 dependencies:
   statsd:
     github: miketheman/statsd.cr
-    branch: master
 
 license: MIT
