@@ -11,9 +11,10 @@ WORKDIR /app
 ADD shard.lock shard.yml /app/
 
 # Install dependencies
-RUN crystal deps
+RUN crystal deps install
 
 ADD . /app
+
 # Build our app
 RUN crystal build --release src/ping-statsd.cr
 

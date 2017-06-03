@@ -2,5 +2,5 @@ version: 1.0
 shards:
   statsd:
     github: miketheman/statsd.cr
-    version: 0.1.0
+    commit: 002ade1a138fea2a1f04cc3908eeeed9de925804
 

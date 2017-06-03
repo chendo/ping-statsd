@@ -14,7 +14,7 @@ module Ping::Statsd
   class Pinger
     def initialize(
       @host : String,
-      @statsd : Statsd::Client,
+      @statsd : ::Statsd::Client,
       @name : String | Nil = nil,
       @metric_base : String = "ping",
       @interval : Float32 = 1_f32,
