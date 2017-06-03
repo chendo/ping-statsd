@@ -3,3 +3,4 @@ version: '2'
 services:
   ping-statsd:
     build: https://github.com/chendo/ping-statsd.git
+    env_file: config
