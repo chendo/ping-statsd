@@ -1,8 +1,7 @@
 require "./ping-statsd/*"
 require "statsd"
 
-class IO::Null
-  include IO
+class IO::Null < IO
   def write(bytes)
   end
   def read(slice)
